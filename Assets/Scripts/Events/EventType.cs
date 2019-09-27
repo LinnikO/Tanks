@@ -4,5 +4,7 @@ using UnityEngine;
 
 public enum EventType 
 {
-   START_GAME
+   START_GAME,
+   PLAYER_KILLED,
+   PLAYER_ARMOR_CHANGED
 }
