@@ -8,7 +8,7 @@ public class TankPlayer : Tank
 
     private int activeTowerIndex = 0;
     private Tower activeTower;
-
+    private Vector2 targetPoint;
     private bool isAcite = false;
 
     public override int Armor {
@@ -38,6 +38,7 @@ public class TankPlayer : Tank
 
     public override void RotataTowerTo(Vector2 targetPoint)
     {
+        this.targetPoint = targetPoint;
         activeTower.RotateToPoint(targetPoint);
     }
 
@@ -64,6 +65,7 @@ public class TankPlayer : Tank
             {
                 towers[i].Active = true;
                 activeTower = towers[i];
+                activeTower.RotateToPoint(targetPoint);
             }
             else
             {
