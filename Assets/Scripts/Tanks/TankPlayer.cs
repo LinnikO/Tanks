@@ -72,6 +72,7 @@ public class TankPlayer : Tank
                 towers[i].Active = false;
             }
         }
+        EventManager.TriggerEvent(EventType.PLAYER_TOWER_CHANGED, activeTower.Type);
     }
 
     protected override void DestroyTank()

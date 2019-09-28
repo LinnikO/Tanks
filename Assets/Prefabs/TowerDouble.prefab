@@ -160,6 +160,7 @@ MonoBehaviour:
   projectileType: 0
   projectileFactory: {fileID: 2559587161330149859, guid: 0c75748b1225a644f8b61d2847823cc7,
     type: 3}
+  type: 1
   cooldown: 0.15
   shootPoint1: {fileID: 950819537104722135}
   shootPoint2: {fileID: 8735750016058223994}

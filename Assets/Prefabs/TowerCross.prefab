@@ -222,6 +222,7 @@ MonoBehaviour:
   projectileType: 1
   projectileFactory: {fileID: 2559587161330149859, guid: 0c75748b1225a644f8b61d2847823cc7,
     type: 3}
+  type: 2
   cooldown: 0.1
   shootPointForward: {fileID: 5591395204102832226}
   shootPointLeft: {fileID: 8101596761681954387}

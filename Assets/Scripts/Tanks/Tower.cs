@@ -14,9 +14,15 @@ public abstract class Tower : MonoBehaviour
     protected ProjectileType projectileType;
     [SerializeField]
     private ProjectileFactory projectileFactory;
+    [SerializeField]
+    private TowerType type;
 
     private bool active = false;
 
+    public TowerType Type {
+        get { return type; }
+    }
+    
     public bool Active {
         get { return active; }
         set {
