@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
         if (scene.name == "Game")
         {
             EventManager.TriggerEvent(EventType.SCORE_CHANGED, gameData.Score);
-            EventManager.TriggerEvent(EventType.ATTEMPS_CHANGED, gameData.Score);
+            EventManager.TriggerEvent(EventType.ATTEMPS_CHANGED, gameData.Attempts);
         }
     }
 
