@@ -35,9 +35,9 @@ public class PlayerControll : MonoBehaviour
         }
 
         if (Input.GetMouseButton(0)) {
-            tankPlayer.Fire();
             Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tankPlayer.RotataTowerTo(mousePoint);
+            tankPlayer.Fire();
         }
     }
 }
