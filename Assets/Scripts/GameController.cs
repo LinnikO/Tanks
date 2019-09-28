@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
     }
 
     private void GameOver() {
-        object[] scoreData = new object[] { gameData.PreviousScore, gameData.Score };
+        int[] scoreData = new int[] { gameData.PreviousScore, gameData.Score };
         EventManager.TriggerEvent(EventType.SHOW_GAME_OVER, scoreData);
         gameData.PreviousScore = gameData.Score;
     }
