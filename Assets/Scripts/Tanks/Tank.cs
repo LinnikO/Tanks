@@ -19,7 +19,7 @@ public abstract class Tank : MonoBehaviour
         set {
             armor = value;
             armorSlider.value = (float)armor / fullArmor;
-            if (armor < 0) {
+            if (armor <= 0) {
                 DestroyTank();
             }
         }
