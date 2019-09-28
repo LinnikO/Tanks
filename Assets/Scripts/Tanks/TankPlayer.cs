@@ -26,7 +26,7 @@ public class TankPlayer : Tank
 
     public override void Fire()
     {
-        activeTower.Fire();
+        activeTower.TryFire();
     }
 
     public override void SpawnTank(Vector2 position)

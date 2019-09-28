@@ -9,7 +9,7 @@ public class TankEnemy : Tank
 
     public override void Fire()
     {
-        tower.Fire();
+        tower.TryFire();
     }
 
     public override void RotataTowerTo(Vector2 targetPoint)

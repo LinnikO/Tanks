@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class TowerSimple : Tower
 {
+    [SerializeField] Transform shootPoint;
+
+    private bool canFire = true;
+
     protected override bool CanFireNow()
     {
-        return true;
+        return canFire;
     }
 
-    protected override void LaunchProjectiles()
+    protected override void Fire()
     {
-        print("piw simple");
+        canFire = false;
+        Projectile projectile = LaunchProjectile(shootPoint.position, transform.right);
+        projectile.Destroyed += ProjectileDestroyed;
+    }
+
+    private void ProjectileDestroyed() {
+        canFire = true;
     }
 }

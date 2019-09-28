@@ -4,6 +4,17 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
 {
+    [SerializeField]
+    protected int damage;
+    [SerializeField]
+    protected float projectilesSpeed;
+    [SerializeField]
+    protected ProjectileOwner owner;
+    [SerializeField]
+    protected ProjectileType projectileType;
+    [SerializeField]
+    private ProjectileFactory projectileFactory;
+
     private bool active = false;
 
     public bool Active {
@@ -24,14 +35,22 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
-    public void Fire() {
+    public void TryFire() {
         if (Active && CanFireNow())
         {
-            LaunchProjectiles();
+            Fire();
         }
     }
 
     protected abstract bool CanFireNow();
 
-    protected abstract void LaunchProjectiles();
+    protected abstract void Fire();
+
+    protected Projectile LaunchProjectile(Vector2 startPoint, Vector2 direction)
+    {
+        Projectile projectile = projectileFactory.GetProjectile(projectileType);
+        projectile.transform.position = startPoint;
+        projectile.LaunchProjectile(owner, direction, damage, projectilesSpeed);
+        return projectile;
+    }
 }

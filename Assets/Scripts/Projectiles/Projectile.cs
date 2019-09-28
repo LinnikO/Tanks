@@ -32,12 +32,13 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void LaunchProjectile(ProjectileOwner owner, Vector3 direction, int damage, float speed) {
+    public void LaunchProjectile(ProjectileOwner owner, Vector2 direction, int damage, float speed) {
         Owner = owner;
         this.direction = direction;
         this.damage = damage;
         this.speed = speed;
         isMoving = true;
+        transform.right = direction;
     }
 
     private void Update()

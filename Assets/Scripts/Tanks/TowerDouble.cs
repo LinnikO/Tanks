@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class TowerDouble : Tower
 {
+    [SerializeField] float cooldown;
+    [SerializeField] Transform shootPoint1;
+    [SerializeField] Transform shootPoint2;
+
+    private float shootTime = 0;
+
     protected override bool CanFireNow()
     {
-        return true;
+        return Time.time - shootTime > cooldown;
     }
 
-    protected override void LaunchProjectiles()
-    {
-        print("piw double");
+    protected override void Fire()
+    {       
+        shootTime = Time.time;
+        LaunchProjectile(shootPoint1.position, transform.right);
+        LaunchProjectile(shootPoint2.position, transform.right);
     }
 }
