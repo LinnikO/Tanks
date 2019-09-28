@@ -1018,6 +1018,11 @@ PrefabInstance:
       propertyPath: owner
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4162215169208943862, guid: c9ebc3b3b6e62724681bbb00626b7450,
+        type: 3}
+      propertyPath: projectilesSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4162215169208943856, guid: c9ebc3b3b6e62724681bbb00626b7450,
         type: 3}
       propertyPath: m_LocalPosition.x
