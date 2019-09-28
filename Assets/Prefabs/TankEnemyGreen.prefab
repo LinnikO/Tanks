@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5240448473350366341}
   m_Layer: 0
   m_Name: TankEnemyGreen
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1012,6 +1012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerSimple
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162215169208943862, guid: c9ebc3b3b6e62724681bbb00626b7450,
+        type: 3}
+      propertyPath: owner
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4162215169208943856, guid: c9ebc3b3b6e62724681bbb00626b7450,
         type: 3}

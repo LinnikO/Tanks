@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 2113539810188061297}
   m_Layer: 0
   m_Name: TankEnemyYellow
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1012,6 +1012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerDouble
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836456403604355689, guid: c53ead9e57e70b943b68f9d53c2fc3e6,
+        type: 3}
+      propertyPath: owner
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7836456403604355695, guid: c53ead9e57e70b943b68f9d53c2fc3e6,
         type: 3}
