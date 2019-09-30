@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
 
     private void OnPlayerKilled(object args) {
         gameData.Attempts--;
-        EventManager.TriggerEvent(EventType.ATTEMPS_CHANGED, gameData.Score);
+        EventManager.TriggerEvent(EventType.ATTEMPS_CHANGED, gameData.Attempts);
         if (gameData.Attempts == 0)
         {
             GameOver();
