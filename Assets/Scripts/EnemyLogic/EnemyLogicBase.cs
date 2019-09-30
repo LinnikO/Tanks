@@ -16,6 +16,7 @@ public class EnemyLogicBase : MonoBehaviour
 
     protected List<PathPoint> movePath;
     protected int pathIndex;
+    protected Vector2 moveDirection;
     private int playerLayerMask;
 
     public Transform PlayerTransform { get; set; }
@@ -40,6 +41,7 @@ public class EnemyLogicBase : MonoBehaviour
         float maxDistance = (pathPoint.point - (Vector2)transform.position).magnitude;
         tankMovement.Move(pathPoint.direction, maxDistance);
         tank.RotataTowerTo((Vector2)transform.position + pathPoint.direction);
+        moveDirection = pathPoint.direction;
         if ((Vector2)transform.position == pathPoint.point)
         {
             pathIndex++;
@@ -183,7 +185,22 @@ public class EnemyLogicBase : MonoBehaviour
     }
 
     private bool IsPlayerInFront() {       
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, shootDisatance, playerLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, shootDisatance, playerLayerMask);
         return hit.transform != null;
+    }
+
+    protected void ChasePlayerUpdate()
+    {
+        if (movePath == null || movePath.Count == 0)
+        {
+            FindMovePath(PlayerTransform.position);
+        }
+    }
+
+    protected Vector2 GetRandomFieldPoint()
+    {
+        float x = Random.Range(gameFieldSize.xMin, gameFieldSize.xMax);
+        float y = Random.Range(gameFieldSize.yMin, gameFieldSize.yMin);
+        return new Vector2(x, y);
     }
 }
