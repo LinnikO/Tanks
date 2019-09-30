@@ -63,6 +63,7 @@ public class EnemyLogicBase : MonoBehaviour
             movePath = new List<PathPoint>();
         }
         movePath.Clear();
+        pathIndex = 0;
 
         float distanceX;
         float distanceY;
