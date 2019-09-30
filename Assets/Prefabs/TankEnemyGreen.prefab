@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8539900316126440974}
   - component: {fileID: 9021307368034572535}
   - component: {fileID: 5240448473350366341}
+  - component: {fileID: 311726691502545567}
   m_Layer: 0
   m_Name: TankEnemyGreen
   m_TagString: Enemy
@@ -94,6 +95,27 @@ MonoBehaviour:
     width: 9
     height: 9
   tankBody: {fileID: 3240902483252567531}
+--- !u!114 &311726691502545567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430281599131684543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b27f7dd5afffa4ba1e99fb1878f70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameFieldSize:
+    serializedVersion: 2
+    x: -4.5
+    y: -4.5
+    width: 9
+    height: 9
+  tankMovement: {fileID: 5240448473350366341}
+  tank: {fileID: 9021307368034572535}
+  shootDisatance: 3
 --- !u!1 &733730527695282464
 GameObject:
   m_ObjectHideFlags: 0
