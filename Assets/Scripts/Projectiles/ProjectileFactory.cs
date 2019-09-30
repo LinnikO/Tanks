@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MarchingBytes;
 
 public class ProjectileFactory : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class ProjectileFactory : MonoBehaviour
         switch (type)
         {
             case ProjectileType.NORMAL:
-                return Instantiate(projectileNormal).GetComponent<Projectile>();               
+                GameObject projectileNormal = EasyObjectPool.instance.GetObjectFromPool("ProjectileNormal", Vector3.zero, Quaternion.identity);
+                return projectileNormal.GetComponent<Projectile>();               
             case ProjectileType.SMALL:
-                return Instantiate(projectileSmall).GetComponent<Projectile>();
+                GameObject projectileSmall = EasyObjectPool.instance.GetObjectFromPool("ProjectileSmall", Vector3.zero, Quaternion.identity);
+                return projectileSmall.GetComponent<Projectile>();
             default:
                 return null;
         }

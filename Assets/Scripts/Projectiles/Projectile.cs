@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MarchingBytes;
 
 public class Projectile : MonoBehaviour
 {
@@ -60,23 +61,22 @@ public class Projectile : MonoBehaviour
         {
             Tank tank = collision.gameObject.GetComponent<Tank>();
             tank.TakeDamage(damage);
-            OnDestroyed();
-            Destroy(gameObject);
+            DestroyProjectile();
         }
         else if (collision.transform.tag == "Border")
         {
-            OnDestroyed();
-            Destroy(gameObject);
+            DestroyProjectile();
         }
     }
 
-    private void OnDestroyed()
-    {
-        if (Destroyed != null) {
+    private void DestroyProjectile() {
+        isMoving = false;
+        EasyObjectPool.instance.ReturnObjectToPool(this.gameObject);
+        if (Destroyed != null)
+        {
             Destroyed();
         }
     }
-
 }
 
 public enum ProjectileOwner {
