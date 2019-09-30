@@ -10,7 +10,7 @@ public class TankMovement : MonoBehaviour
 
     public bool CanMove { get; set; }
 
-    public void Move(Vector2 direction)
+    public void Move(Vector2 direction, float maxDistance = 1f)
     {
         if (!CanMove)
         {
@@ -18,8 +18,12 @@ public class TankMovement : MonoBehaviour
         }
 
         Vector2 normalizedDirection = direction.normalized;
-        transform.position = (Vector2)transform.position + normalizedDirection * moveSpeed * Time.deltaTime;
-       
+        float distance = moveSpeed * Time.deltaTime;
+        if (distance > maxDistance) {
+            distance = maxDistance;
+        }
+        transform.position = (Vector2)transform.position + normalizedDirection * distance;
+        
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         tankBody.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         CheckBorders();

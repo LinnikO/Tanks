@@ -7,6 +7,11 @@ public class TankEnemy : Tank
     [SerializeField] int killScore;
     [SerializeField] Tower tower;
 
+    private void Awake()
+    {
+        tower.Active = true;
+    }
+
     public override void Fire()
     {
         tower.TryFire();

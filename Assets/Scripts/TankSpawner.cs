@@ -107,6 +107,7 @@ public class TankSpawner : MonoBehaviour
         enemiesSpawned++;
         lastSpawnPoint = spawnPoint;
         lastSpawnTime = Time.time;
+        tank.GetComponent<EnemyLogicBase>().PlayerTransform = tankPlayer.transform;
     }
 
     private Vector2 GetEnemySpawnPoint() {
