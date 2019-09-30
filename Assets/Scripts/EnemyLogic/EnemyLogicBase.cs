@@ -9,7 +9,7 @@ public class EnemyLogicBase : MonoBehaviour
         public Vector2 direction;
     }
 
-    [SerializeField] Rect gameFieldSize;
+    [SerializeField] protected Rect gameFieldSize;
     [SerializeField] TankMovement tankMovement;
     [SerializeField] Tank tank;
     [SerializeField] float shootDisatance;
@@ -17,19 +17,24 @@ public class EnemyLogicBase : MonoBehaviour
     protected List<PathPoint> movePath;
     protected int pathIndex;
     protected Vector2 moveDirection;
+    protected Transform playerTransform;
+    protected bool initialized;
     private int playerLayerMask;
 
-    public Transform PlayerTransform { get; set; }
-
-    protected virtual void Awake()
+    public virtual void Init(Transform playerTransform)
     {
+        this.playerTransform = playerTransform;
         playerLayerMask = 1 << LayerMask.NameToLayer("Player");
+        initialized = true;
     }
 
     protected virtual void Update()
     {
-        MoveUpdate();
-        FireUpdate();
+        if (initialized)
+        {
+            MoveUpdate();
+            FireUpdate();
+        }
     }
 
     private void MoveUpdate() {
@@ -66,7 +71,7 @@ public class EnemyLogicBase : MonoBehaviour
 
         GetDisatanceX(out distanceX, out reversX, (Vector2)transform.position, target);
         GetDisatanceY(out distanceY, out reversY, (Vector2)transform.position, target);
-
+        
         PathPoint pathPoint1 = new PathPoint();
         PathPoint pathPoint2 = new PathPoint();
 
@@ -116,11 +121,11 @@ public class EnemyLogicBase : MonoBehaviour
 
         if (forwardDisatance < reversDisatance)
         {
-            distance = forwardDisatance;
+            distance = Mathf.Abs(forwardDisatance);
             revers = false;
         }
         else {
-            distance = reversDisatance;
+            distance = Mathf.Abs(reversDisatance);
             revers = true;
         }
     }
@@ -132,12 +137,12 @@ public class EnemyLogicBase : MonoBehaviour
 
         if (forwardDisatance < reversDisatance)
         {
-            distance = forwardDisatance;
+            distance = Mathf.Abs(forwardDisatance);
             revers = false;
         }
         else
         {
-            distance = reversDisatance;
+            distance = Mathf.Abs(reversDisatance);
             revers = true;
         }
     }
@@ -193,7 +198,7 @@ public class EnemyLogicBase : MonoBehaviour
     {
         if (movePath == null || movePath.Count == 0)
         {
-            FindMovePath(PlayerTransform.position);
+            FindMovePath(playerTransform.position);
         }
     }
 

@@ -7,6 +7,9 @@ public class GreenEnemyLogic : EnemyLogicBase
     protected override void Update()
     {
         base.Update();
-        ChasePlayerUpdate();
+        if (initialized)
+        {
+            ChasePlayerUpdate();
+        }
     }
 }

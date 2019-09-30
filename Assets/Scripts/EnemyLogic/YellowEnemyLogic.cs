@@ -13,35 +13,40 @@ public class YellowEnemyLogic : EnemyLogicBase
     private float startRandomTime;
     private float startChaseTime;
 
-    protected override void Awake()
+    public override void Init(Transform playerTransform)
     {
-        base.Awake();
+        base.Init(playerTransform);
         StartRandomMove();
     }
 
     protected override void Update()
     {
         base.Update();
-        CheckMoveState();
-        if (chasePlayer) {
-            ChasePlayerUpdate();
-        }
-        else {
-            RandomMoveUpdate();
+        if (initialized)
+        {
+            CheckMoveState();
+            if (chasePlayer)
+            {
+                ChasePlayerUpdate();
+            }
+            else
+            {
+                RandomMoveUpdate();
+            }
         }
     }
 
-    private void StartRandomMove() {       
+    private void StartRandomMove() {
         chasePlayer = false;
         randomMoveTime = Random.Range(randomMoveTimeMin, randomMoveTimeMax);
         startRandomTime = Time.time;
         FindMovePath(GetRandomFieldPoint());
     }
 
-    private void StartChasePlayer() {       
+    private void StartChasePlayer() {
         chasePlayer = true;
         startChaseTime = Time.time;
-        FindMovePath(PlayerTransform.position);
+        FindMovePath(playerTransform.position);
     }
 
     private void CheckMoveState() {

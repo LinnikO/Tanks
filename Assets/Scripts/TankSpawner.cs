@@ -100,14 +100,15 @@ public class TankSpawner : MonoBehaviour
         tankPlayer.SpawnTank(playerSpawnPoint);
     }
 
-    private void SpawnEnemy(TankType type) {
+    private void SpawnEnemy(TankType type)
+    {
         Vector2 spawnPoint = GetEnemySpawnPoint();
         Tank tank = tanksFactory.GetTank(type);
         tank.SpawnTank(spawnPoint);
         enemiesSpawned++;
         lastSpawnPoint = spawnPoint;
         lastSpawnTime = Time.time;
-        tank.GetComponent<EnemyLogicBase>().PlayerTransform = tankPlayer.transform;
+        tank.GetComponent<EnemyLogicBase>().Init(tankPlayer.transform);
     }
 
     private Vector2 GetEnemySpawnPoint() {
